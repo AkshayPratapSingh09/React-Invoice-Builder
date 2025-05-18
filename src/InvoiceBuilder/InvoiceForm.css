@@ -376,7 +376,26 @@
 }
 
 .discount-form .apply-discount-btn {
-  height: 42px;
-  white-space: nowrap;
-  min-width: 120px;
+  background: #6366f1;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(99,102,241,0.08);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+  cursor: pointer;
+}
+
+.apply-discount-btn:hover:not(:disabled) {
+  background: #4f46e5;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.12);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.apply-discount-btn:disabled {
+  background: #a5b4fc;
+  cursor: not-allowed;
+  opacity: 0.7;
 }
