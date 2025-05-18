@@ -23,8 +23,14 @@ export default function InvoicePreview({ invoiceData, subtotal, tax, discount, t
 
         <div className="invoice-info">
           <div className={`invoice-info-section ${getAnimationClass("dueDate")}`}>
-            <h3>Due Date</h3>
-            <p>{new Date(invoiceData.dueDate).toLocaleDateString()}</p>
+            <h3>Invoice Details</h3>
+            <p><strong>Invoice #:</strong> {invoiceData.invoiceNumber}</p>
+            <p><strong>Bill #:</strong> {invoiceData.billNumber}</p>
+            <p><strong>Date:</strong> {new Date().toLocaleDateString()}</p>
+            <p><strong>Time:</strong> {new Date().toLocaleTimeString()}</p>
+            <p><strong>Cashier ID:</strong> {invoiceData.cashierId}</p>
+            <p><strong>GSTIN:</strong> {invoiceData.gstin}</p>
+            <p><strong>Due Date:</strong> {new Date(invoiceData.dueDate).toLocaleDateString()}</p>
           </div>
 
           <div className={`invoice-info-section ${getAnimationClass("subject")}`}>
@@ -76,12 +82,12 @@ export default function InvoicePreview({ invoiceData, subtotal, tax, discount, t
                   <tr key={item.id}>
                     <td>{item.name}</td>
                     <td>{item.quantity}</td>
-                    <td>${item.price.toFixed(2)}</td>
+                    <td>₹{item.price.toFixed(2)}</td>
                     <td>{(() => {
                       const catTaxes = calculateCategoryTaxes();
                       return catTaxes[item.category]?.taxRate ? `${catTaxes[item.category].taxRate}%` : "-";
                     })()}</td>
-                    <td>${(item.price * item.quantity).toFixed(2)}</td>
+                    <td>₹{(item.price * item.quantity).toFixed(2)}</td>
                     <td>{item.category}</td>
                   </tr>
                 ))
@@ -129,14 +135,14 @@ export default function InvoicePreview({ invoiceData, subtotal, tax, discount, t
           <div className="invoice-totals">
             <div className="total-row">
               <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>₹{subtotal.toFixed(2)}</span>
             </div>
 
             {/* Only show total tax in totals section now */}
             {invoiceData.items.length > 0 && (
               <div className="total-row">
                 <span>Total Tax:</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>₹{tax.toFixed(2)}</span>
               </div>
             )}
 
@@ -144,7 +150,7 @@ export default function InvoicePreview({ invoiceData, subtotal, tax, discount, t
 
             <div className="total-row grand-total">
               <span>Total:</span>
-              <span>${total.toFixed(2)}</span>
+              <span>₹{total.toFixed(2)}</span>
             </div>
           </div>
         </div>

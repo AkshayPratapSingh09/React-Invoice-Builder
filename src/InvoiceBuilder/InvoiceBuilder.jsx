@@ -39,21 +39,24 @@ export default function InvoiceBuilder() {
   const [invoiceData, setInvoiceData] = useState({
     invoiceNumber: generateInvoiceNumber(),
     customer: {
-      name: "",
-      email: "",
-      phone: "",
+      name: "Guest Customer",
+      email: "guest@example.com",
+      phone: "+91 98765 43210",
     },
-    subject: "",
+    subject: "Shopping Bill",
     dueDate: new Date().toISOString().split("T")[0],
     items: [],
     taxApplied: false,
-    taxRate: 10, // 10% default tax rate
+    taxRate: 10,
     discountApplied: false,
     discountCode: "",
     discountAmount: 0,
-    discountType: "percentage", // 'percentage' or 'fixed'
+    discountType: "percentage",
+    cashierId: "CASH" + Math.floor(Math.random() * 1000).toString().padStart(3, '0'),
+    gstin: "29ABCDE1234F1Z5",
+    billNumber: "BILL" + Math.floor(Math.random() * 10000).toString().padStart(5, '0'),
     header: "INVOICE",
-    footer: "Thank you for your business!",
+    footer: "Thank you for your business!"
   })
 
   const [availableProducts, setAvailableProducts] = useState(products)
@@ -208,12 +211,14 @@ export default function InvoiceBuilder() {
     const customer = invoiceData.customer
     const items = invoiceData.items
     const today = new Date().toLocaleDateString()
+    const currentTime = new Date().toLocaleTimeString()
     let itemsRows = items.map(item => `
       <tr>
         <td style="padding:8px 12px;border:1px solid #e5e7eb;">${item.name}</td>
         <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:center;">${item.quantity}</td>
-        <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:right;">${item.price.toFixed(2)}</td>
-        <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:right;">${(item.price * item.quantity).toFixed(2)}</td>
+        <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:right;">₹${item.price.toFixed(2)}</td>
+        <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:center;">${getCategoryTaxRate(item.category)}%</td>
+        <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:right;">₹${(item.price * item.quantity).toFixed(2)}</td>
         <td style="padding:8px 12px;border:1px solid #e5e7eb;text-align:center;">${item.category}</td>
       </tr>
     `).join("")
@@ -268,12 +273,16 @@ export default function InvoiceBuilder() {
                   <div>${companyPhone}</div>
                 </div>
               </div>
-              <div class="invoice-title">INVOICE</div>
+              <div class="invoice-title">${invoiceData.header}</div>
             </div>
             <div class="invoice-details">
               <div class="details-block">
                 <strong>Invoice #</strong> ${invoiceData.invoiceNumber}<br/>
+                <strong>Bill #</strong> ${invoiceData.billNumber}<br/>
                 <strong>Date</strong> ${today}<br/>
+                <strong>Time</strong> ${currentTime}<br/>
+                <strong>Cashier ID</strong> ${invoiceData.cashierId}<br/>
+                <strong>GSTIN</strong> ${invoiceData.gstin}<br/>
                 <strong>Due Date</strong> ${new Date(invoiceData.dueDate).toLocaleDateString()}
               </div>
               <div class="details-block">
@@ -288,24 +297,24 @@ export default function InvoiceBuilder() {
                   <th>Item</th>
                   <th>Qty</th>
                   <th>Unit Price</th>
+                  <th>Tax</th>
                   <th>Amount</th>
                   <th>Category</th>
                 </tr>
               </thead>
               <tbody>
-                ${itemsRows || `<tr><td colspan="5" style="text-align:center;color:#aaa;">No items</td></tr>`}
+                ${itemsRows || `<tr><td colspan="6" style="text-align:center;color:#aaa;">No items</td></tr>`}
               </tbody>
             </table>
             <table class="summary-table">
               <tbody>
-                <tr><td class="label">Subtotal</td><td class="value">${calculateSubtotal().toFixed(2)}</td></tr>
-                <tr><td class="label">Total Tax</td><td class="value">${calculateTotalTax().toFixed(2)}</td></tr>
-                <tr><td class="label">Discount</td><td class="value">${invoiceData.discountApplied ? `-${calculateDiscount().toFixed(2)}` : "0.00"}</td></tr>
-                <tr><td colspan="2" class="total">Total: ${calculateTotal().toFixed(2)}</td></tr>
+                <tr><td class="label">Subtotal</td><td class="value">₹${calculateSubtotal().toFixed(2)}</td></tr>
+                <tr><td class="label">Total Tax</td><td class="value">₹${calculateTotalTax().toFixed(2)}</td></tr>
+                <tr><td class="label">Discount</td><td class="value">${invoiceData.discountApplied ? `-₹${calculateDiscount().toFixed(2)}` : "₹0.00"}</td></tr>
+                <tr><td colspan="2" class="total">Total: ₹${calculateTotal().toFixed(2)}</td></tr>
               </tbody>
             </table>
             <div class="invoice-footer">
-              Thank you for your business!<br/>
               <span style="color:#6366f1;">${invoiceData.footer || ""}</span>
             </div>
           </div>

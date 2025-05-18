@@ -44,19 +44,6 @@ export default function InvoiceForm({
       <h2>Invoice Details</h2>
 
       <div className="form-section">
-        <h3>Header & Footer</h3>
-        <div className="form-group">
-          <label>Invoice Header</label>
-          <input type="text" value={invoiceData.header} onChange={(e) => onInputChange("header", e.target.value)} />
-        </div>
-
-        <div className="form-group">
-          <label>Invoice Footer</label>
-          <input type="text" value={invoiceData.footer} onChange={(e) => onInputChange("footer", e.target.value)} />
-        </div>
-      </div>
-
-      <div className="form-section">
         <h3>Customer Information</h3>
         <div className="form-group">
           <label>Customer Name</label>
@@ -65,6 +52,7 @@ export default function InvoiceForm({
             value={invoiceData.customer.name}
             onChange={(e) => onCustomerChange("name", e.target.value)}
             placeholder="Enter customer name"
+            defaultValue="Guest Customer"
           />
         </div>
 
@@ -75,6 +63,7 @@ export default function InvoiceForm({
             value={invoiceData.customer.email}
             onChange={(e) => onCustomerChange("email", e.target.value)}
             placeholder="Enter customer email"
+            defaultValue="guest@example.com"
           />
         </div>
 
@@ -85,22 +74,13 @@ export default function InvoiceForm({
             value={invoiceData.customer.phone}
             onChange={(e) => onCustomerChange("phone", e.target.value)}
             placeholder="Enter customer phone"
+            defaultValue="+91 98765 43210"
           />
         </div>
       </div>
 
       <div className="form-section">
         <h3>Invoice Information</h3>
-        <div className="form-group">
-          <label>Subject</label>
-          <input
-            type="text"
-            value={invoiceData.subject}
-            onChange={(e) => onInputChange("subject", e.target.value)}
-            placeholder="Invoice subject"
-          />
-        </div>
-
         <div className="form-group">
           <label>Due Date</label>
           <input type="date" value={invoiceData.dueDate} onChange={(e) => onInputChange("dueDate", e.target.value)} />

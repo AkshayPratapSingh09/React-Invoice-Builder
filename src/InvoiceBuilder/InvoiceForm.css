@@ -238,3 +238,28 @@
 .print-invoice-btn:hover {
   background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
 }
+
+.discount-form {
+  margin-bottom: 1.5rem;
+  background-color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.discount-form .form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.discount-form .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.discount-form .apply-discount-btn {
+  height: 42px;
+  white-space: nowrap;
+  min-width: 120px;
+}
