@@ -229,7 +229,11 @@ export default function InvoiceForm({
           onClick={onPrintInvoice}
           disabled={invoiceData.items.length === 0}
         >
-          Print Receipt
+          <span className="text">Print Receipt</span>
+          <span className="blob"></span>
+          <span className="blob"></span>
+          <span className="blob"></span>
+          <span className="blob"></span>
         </button>
       </div>
     </div>

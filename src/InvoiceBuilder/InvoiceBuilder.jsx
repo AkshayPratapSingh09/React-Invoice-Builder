@@ -5,6 +5,7 @@ import { generateInvoiceNumber } from "../utils/helpers"
 import { products } from "../data/products"
 import { discountCoupons } from "../data/discounts"
 import "./InvoiceBuilder.css"
+import Sidebar from "./Sidebar"
 
 // Tax rates by category (example: India GST split equally between SGST and CGST)
 const TAX_RATES = {
@@ -316,6 +317,7 @@ export default function InvoiceBuilder() {
             </table>
             <div class="invoice-footer">
               <span style="color:#6366f1;">${invoiceData.footer || ""}</span>
+              <span>${"Please visit Again!"}</span>
             </div>
           </div>
         </body>
@@ -329,40 +331,41 @@ export default function InvoiceBuilder() {
   }
 
   return (
-    <div className="invoice-builder">
-      <div className="header">
-        <div className="logo">InvoicePro</div>
-        <h1>Create Invoice</h1>
-      </div>
-
-      <div className="invoice-container">
-        <InvoiceForm
-          invoiceData={invoiceData}
-          availableProducts={availableProducts}
-          availableCoupons={availableCoupons}
-          onInputChange={handleInputChange}
-          onCustomerChange={handleCustomerChange}
-          onAddItem={handleAddItem}
-          onRemoveItem={handleRemoveItem}
-          onApplyDiscount={handleApplyDiscount}
-          onPrintInvoice={handlePrintInvoice}
-          calculateSubtotal={calculateSubtotal}
-          calculateTax={calculateTotalTax}
-          calculateDiscount={calculateDiscount}
-          calculateTotal={calculateTotal}
-          calculateCategoryTaxes={calculateCategoryTaxes}
-        />
-
-        <InvoicePreview
-          invoiceData={invoiceData}
-          subtotal={calculateSubtotal()}
-          tax={calculateTotalTax()}
-          discount={calculateDiscount()}
-          total={calculateTotal()}
-          animatingField={animatingField}
-          calculateCategoryTaxes={calculateCategoryTaxes}
-          onRemoveDiscount={handleRemoveDiscount}
-        />
+    <div className="invoice-builder" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+      <Sidebar />
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <div className="header">
+          <div className="logo">InvoicePro</div>
+          <h1>Create Invoice</h1>
+        </div>
+        <div className="invoice-container">
+          <InvoiceForm
+            invoiceData={invoiceData}
+            availableProducts={availableProducts}
+            availableCoupons={availableCoupons}
+            onInputChange={handleInputChange}
+            onCustomerChange={handleCustomerChange}
+            onAddItem={handleAddItem}
+            onRemoveItem={handleRemoveItem}
+            onApplyDiscount={handleApplyDiscount}
+            onPrintInvoice={handlePrintInvoice}
+            calculateSubtotal={calculateSubtotal}
+            calculateTax={calculateTotalTax}
+            calculateDiscount={calculateDiscount}
+            calculateTotal={calculateTotal}
+            calculateCategoryTaxes={calculateCategoryTaxes}
+          />
+          <InvoicePreview
+            invoiceData={invoiceData}
+            subtotal={calculateSubtotal()}
+            tax={calculateTotalTax()}
+            discount={calculateDiscount()}
+            total={calculateTotal()}
+            animatingField={animatingField}
+            calculateCategoryTaxes={calculateCategoryTaxes}
+            onRemoveDiscount={handleRemoveDiscount}
+          />
+        </div>
       </div>
     </div>
   )
