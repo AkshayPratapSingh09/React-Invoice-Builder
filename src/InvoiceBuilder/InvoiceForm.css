@@ -1,0 +1,240 @@
+.invoice-form-container {
+  padding: 2rem;
+  overflow-y: auto;
+  max-height: calc(100vh - 100px);
+}
+
+.invoice-form-container h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.form-section {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.form-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-section h3 {
+  font-size: 1.125rem;
+  margin-bottom: 1.25rem;
+  color: #334155;
+  font-weight: 600;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  color: #475569;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+  background-color: #f8fafc;
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #cbd5e1;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  background-color: white;
+}
+
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.add-item-form {
+  margin-bottom: 1.5rem;
+  background-color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.add-item-btn,
+.apply-discount-btn,
+.apply-tax-btn,
+.print-invoice-btn {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.add-item-btn:hover,
+.apply-discount-btn:hover,
+.apply-tax-btn:hover,
+.print-invoice-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+}
+
+.add-item-btn:disabled,
+.apply-discount-btn:disabled,
+.apply-tax-btn:disabled,
+.print-invoice-btn:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.items-list {
+  margin-top: 1.5rem;
+}
+
+.items-list h4 {
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.no-items {
+  font-size: 0.875rem;
+  color: #64748b;
+  font-style: italic;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.items-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.875rem;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.items-table th,
+.items-table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.items-table th {
+  font-weight: 600;
+  color: #475569;
+  background-color: #f8fafc;
+}
+
+.items-table tr:last-child td {
+  border-bottom: none;
+}
+
+.remove-item-btn {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.remove-item-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}
+
+.tax-section {
+  margin-top: 1.5rem;
+  background-color: #f8fafc;
+  padding: 1.25rem;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+}
+
+.totals-section {
+  margin-top: 2rem;
+}
+
+.totals {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: #f8fafc;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  color: #475569;
+}
+
+.total-row.discount {
+  color: #059669;
+  font-weight: 500;
+}
+
+.total-row.grand-total {
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e2e8f0;
+  color: #1e293b;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.print-invoice-btn {
+  padding: 0.875rem 1.5rem;
+  font-size: 0.875rem;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+}
+
+.print-invoice-btn:hover {
+  background: linear-gradient(135deg, #4338ca 0%, #6d28d9 100%);
+}

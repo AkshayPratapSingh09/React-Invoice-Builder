@@ -1,0 +1,214 @@
+.invoice-preview-container {
+    padding: 2rem;
+    background-color: #f8fafc;
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+  }
+  
+  .preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .preview-header h2 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    font-weight: 600;
+    letter-spacing: -0.025em;
+  }
+  
+  .preview-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+  
+  .preview-action-btn {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 0.625rem 1rem;
+    font-size: 0.875rem;
+    color: #475569;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .preview-action-btn:hover {
+    background-color: #f8fafc;
+    color: #1e293b;
+    border-color: #cbd5e1;
+    transform: translateY(-1px);
+  }
+  
+  .invoice-preview {
+    background-color: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+  
+  .invoice-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid #f1f5f9;
+  }
+  
+  .invoice-header h1 {
+    font-size: 2rem;
+    color: #1e293b;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+  
+  .invoice-number {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-weight: 500;
+  }
+  
+  .invoice-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .invoice-info-section h3 {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  
+  .invoice-info-section p {
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 500;
+  }
+  
+  .invoice-parties {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+  }
+  
+  .invoice-customer,
+  .invoice-company {
+    flex: 1;
+    background-color: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  
+  .invoice-customer h3,
+  .invoice-company h3 {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .invoice-customer p,
+  .invoice-company p {
+    font-size: 0.875rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+  }
+  
+  .invoice-items {
+    margin-bottom: 2.5rem;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.875rem;
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+  }
+  
+  .invoice-table th {
+    font-weight: 600;
+    color: #475569;
+    background-color: #f8fafc;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+  
+  .invoice-table td.no-items {
+    text-align: center;
+    padding: 2rem;
+    font-style: italic;
+    color: #64748b;
+    background-color: #f8fafc;
+  }
+  
+  .invoice-summary {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2.5rem;
+  }
+  
+  .invoice-totals {
+    width: 300px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #f8fafc;
+  }
+  
+  .total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+    font-size: 0.875rem;
+    color: #475569;
+  }
+  
+  .total-row.discount {
+    color: #059669;
+    font-weight: 500;
+  }
+  
+  .total-row.grand-total {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e2e8f0;
+    color: #1e293b;
+  }
+  
+  .invoice-footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid #f1f5f9;
+    color: #64748b;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+  
